@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block start %}
+    <h1>This is home page</h1>
+    <a href="/contact/">contact</a>
+    <a href="/about/">about</a>
+        <!--  {{peoples}}  -->
+    <div class="container">
+        <table class="table">
+            <tr>
+              <th>S.no</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Can Vote</th>
+            </tr>
+            {% for people in peoples %}
+            <tr>
+              <td>{{forloop.counter}}</td>
+              <td>{{people.name}}</td>
+              <td>{{people.age}}</td>
+              <td {% if people.age < 18 %} style="background: red;" {% else %} {% endif %} >
+                {% if people.age >= 18 %}
+                     👍 
+                {% else %}
+                    👎
+
+                {% endif %}
+            </td>
+            </tr>
+            {% endfor %}
+          </table>
+
+          <p>
+            {% if "cucumber" in vegetable %}
+            Yes Availabe
+            {% elif "tomato" in vegetable %}
+            Yes Availabe
+            {% else %}
+            not 
+            {% endif %}
+
+        </p>
+        </div>
+    <script>
+        console.log("Hey Django")
+    </script>
+
+
+  {% endblock %}
